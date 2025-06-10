@@ -56,4 +56,5 @@ jobs:
                   --cpu 1 \
                   --max-instances 1 \
                   --project ${{ env.PROJECT_ID  }} \
-                  --service-account ${{ env.SERVICE_ACCOUNT }}
+                  --service-account ${{ env.SERVICE_ACCOUNT }} \
+                  --subnet=my-demo-subnet
