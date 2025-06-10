@@ -44,3 +44,16 @@ jobs:
               run: |-
                   docker build -t "${{ env.AR_URL }}/${{ env.IMAGE_NAME }}:${{ github.sha }}" ./
                   docker push "${{ env.AR_URL }}/${{ env.IMAGE_NAME }}:${{ github.sha }}"
+
+            - name: Deploy to Cloud Run
+              run: |
+                  gcloud run deploy falcon \
+                  --image "${{ env.AR_REPO_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/my-ar-repo/falcon:latest" \
+                  --platform managed \
+                  --region ${{ env.AR_REPO_LOCATION }} \
+                  --port 8080 \
+                  --memory 512Mi \
+                  --cpu 1 \
+                  --max-instances 1 \
+                  --project ${{ env.PROJECT_ID  }} \
+                  --service-account ${{ env.SERVICE_ACCOUNT }}
