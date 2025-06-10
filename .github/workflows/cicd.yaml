@@ -3,7 +3,7 @@ name: Deploy Falcon to Google Cloud
 env:
     SERVICE_NAME: 'github_deploy_falcon'
     GCP_PROJECT_ID: 'infinite-glow-462417-u6'
-    DOCKER_IMAGE_URL: us-central1-docker.pkg.dev/aw_demo/falcon_demo/falcon_demo
+    DOCKER_IMAGE_URL: us-east4-docker.pkg.dev/infinite-glow-462417-u6/falcon/falcon
 
 on:
     push:
@@ -29,7 +29,7 @@ jobs:
 
             - name: Configure Docker
               run: |
-                  gcloud auth configure-docker us-central1-docker.pkg.dev
+                  gcloud auth configure-docker
 
             - name: Build and Push Docker Image
               run: |
