@@ -51,7 +51,7 @@ jobs:
                   --image "${{ env.AR_URL }}/${{ env.IMAGE_NAME }}:${{ github.sha }}" \
                   --platform managed \
                   --region ${{ env.AR_REPO_LOCATION }} \
-                  --port 8080 \
+                  --port 80 \
                   --memory 1024Mi \
                   --cpu 1 \
                   --max-instances 1 \
